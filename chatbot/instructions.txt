@@ -1,0 +1,34 @@
+There isn't any special @mentions or private message functionality. You can just type the message normally.
+
+The crypto_chatbot.py script is for the shell version of the chatbot.
+The discord_interface.py script is for the discord version of the chatbot.
+
+I listed out the questions that you can ask it here just to make it easier for you:
+
+    1) What is the current market price of BTC?
+    2) How many coins are in circulation?
+    3) Who owns the most amount of Bitcoin?
+    4) Who is Satoshi Nakamoto?
+    5) Besides exchanges and Satoshi, who else owns a lot of BTC?
+    6) Germany at one point had a lot, why don't they have as much now?
+    7) What's the hype around Bitcoin? Why is it so sought after?
+    8) What's the reserve strategic act?
+    9) The Bitcoin Pizza Day, what is the significance of it?
+    10) When is the Bitcoin Pizza Day?
+    11) Should I invest into Bitcoin?
+    12) Can you give me a price projection for Bitcoin in the next 2-3 months?
+    13) Does BTC outperform the SNP500?
+    14) When did Bitcoin first get created?
+    15) So on the day that Bitcoin got listed, how much was it going for?
+    16) What programming language was Bitcoin written in?
+    17) Can you tell me the name of the PDF file that holds Bitcoin's Whitepaper?
+    18) What is 1/100,000,000 of a Bitcoin called?
+    19) I want to buy and hold one. What's the best course of action?
+    20) Why do people refer to it as the ultimate privacy tool?
+    21) Can people see how much Bitcoin I own?
+
+greeting the bot and saying bye also works with a few different words
+
+https://discord.com/oauth2/authorize?client_id=1333288706458779678&permissions=274877908992&integration_type=0&scope=bot
+
+And that's the link for the bot

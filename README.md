@@ -20,7 +20,7 @@ based off of the natural language understanding stage. It wouldn't make sense to
 
 All of this is done through what is known as the NLP pipeline.
 
-![image](https://github.com/ramelmirza/nlp-chatbot/image.png)
+![image](https://github.com/ramelmirza/nlp-chatbot/blob/main/image.png)
 
 # Features
 Using the discord version of the bot, specific utterances will have the chatbot answer with extras such as links, files(csv), images, and raw data.

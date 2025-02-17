@@ -16,7 +16,7 @@ def get_request():
     Sends a GET request to CoinMarketCap's API
     :return: JSON string converted to a dict, else return None
     """
-    private_api_key = "b94037d6-1928-4a75-8165-cf87858c1427"
+    private_api_key = ""
     url = "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest"
     query_params = {"CMC_PRO_API_KEY": private_api_key, "id": 1}
 

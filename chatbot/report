@@ -1,0 +1,188 @@
+REPORT FILE:
+
+Same as the first assignment, there isn't any special @mentions or private message functionality. You can just type the message normally. However, in terms of actual functionality with what the bot does; Question 1, 9, and 16 give a special thing in the discord/shell version (I don't want to say it here because it will spoil it but I did label the questions that give it the special thing). I just didn't include Q9 and Q16 in the shell version completely because it doesn't make sense to open a file through python shell - I would have made a tkinter GUI for that, but not enough time.
+
+In terms of spaCy linguistic knowledge, Utterances like:
+
+    "What are your thoughts on Canada"
+
+The user will receive a response back to a link regarding that information.
+
+The crypto_chatbot.py script is for the shell version of the chatbot.
+The discord_interface.py script is for the discord version of the chatbot.
+
+The link to the bot: https://discord.com/oauth2/authorize?client_id=1333288706458779678&permissions=274877908992&integration_type=0&scope=bot
+
+The token is also the same as the one before.
+
+1)
+    what is the current market price of btc
+    what's the market value of btc right now
+    what's the price of orange coin
+
+        REGEX: .*(market|price|value).*(btc|bitcoin|orange coin).*
+
+        ANSWER: The last time I checked, it was 99,550 USD
+
+            - It's technically not the correct answer though. This is the default one. Instead, I used my API file that I built which answers this instead to make it more interesting
+
+2)
+    how many coins are in circulation
+    bitcoin has how many tokens in circulation
+    exactly how many tokens are floating out there
+
+        REGEX: .*(coins|tokens|orange coins){e<=1}.*(circulation|floating|out there){e<=1}
+
+        ANSWER: Just over 19.81 million
+
+3)
+    who owns the most amount of bitcoin
+    is it known who owns a lot of bitcoin
+
+        REGEX: .*(own|owns)(known|amount)?.*(btc|bitcoin|orange coin){e<=1}.*
+
+        ANSWER: Satoshi Nakamoto - that entity holds exactly 1.1 million
+4)
+    who is satoshi nakamoto
+    what are your thoughts on Satoshi
+    is satoshi nakamoto a dog breed or something? i hear about it a lot
+
+        REGEX: .*(the|is|a|an).*(satoshi|nakamoto){e<=2}.*
+
+        ANSWER: Satoshi Nakamoto is the so-called creator of Bitcoin. The identity of Satoshi remains a mystery. Many speculate it to be the CIA, or an individual.
+
+5)
+    can you tell me which exchanges, governments, institutions have the largest holdings
+    identify which hedge funds, or banks, or governments, or institutions, or exchanges that have the most
+
+        REGEX: .*(banks|hedge fund(s)?|exchanges|governments|institutions){e<=1}.*(most|amount|holdings|largest|biggest){e<=1}.*(bitcoin|btc)?
+
+        ANSWER: BlackRock, Microstrategy, Grayscale, and the United States Government.
+
+6)
+    germany at one point had a lot, why don't they have as much now
+    doesn't germany have a lot of it
+
+        REGEX: .*(doesn't|don't)?.*(germany){e<=1}.*(a lot|as|much|now)?.*
+
+        ANSWER: The German government is run by a bunch of fools. 50,000 Bitcoin was in possession, but they sold at an average of 53,000 USD per Bitcoin. Had they waited 4 months, they would have sold for an extra 1.1 billion USD.
+
+7)
+    what's the hype around bitcoin and why is it so sought after
+    what's the fluff around bitcoin
+    why is the orange coin so popular right now
+
+        REGEX: .*(hype|noise|fluff|popular){e<=1}.*(btc|bitcoin|orange coin)?
+
+        ANSWER: It's a store of value - people label it as "digital gold". However, its technology allows you to send any amount of money to another person across the world in ~30 minutes or less!
+
+8)
+    united states of america announced a reserve strategic act, what does that mean
+    what is united states doing with their reserves
+    did usa do something smart for once
+
+        REGEX: .*(united states|usa|america|reserve strategic act|rsa|strategic act|reserve act|strategic act).*
+
+        ANSWER: The United States Government is planning to purchase $76 billion worth of Bitcoin over the next 5 years. They are stockpiling to help combat inflation, and increase their store of value.
+
+9)
+    the bitcoin pizza day, what is the significance of it
+    what makes the orange coin pizza day a tradition
+
+        REGEX: .*(btc|bitcoin|orange coin){e<=1}.*(pizza day){e<=1}.*(special|significance|tradition){e<=2}.*(btc|btc|orange coin)?.*
+
+        ANSWER: Ahh, the Bitcoin Pizza Day... This is when a Florida man (typical American) bought 2 pizzas' for a total of 10,000 Bitcoin in 2010. Had he held until now, he would be in a total profit of around 990 million USD. People celebrate this day for that reason.
+
+            - Again, This is the answer and it does provide it, but I added more to this where an image gets linked (only in the discord, didn't want to make it open a file editor when using the Python Shell - matplotlib was an option but still)
+
+10)
+    is tax fraud with bitcoin possible
+    is taxman evasion with btc an option
+
+        REGEX: .*(taxes|tax fraud|tax|taxman).*(bitcoin|btc|orange coin){e<=1}.*
+
+        ANSWER: Maybe it is, maybe it isn't - either way pay your taxes.
+
+11)
+    should I invest into bitcoin
+    is it worth it for me to buy bitcoin right now
+    i want to buy bitcoin, should i?
+
+        REGEX: .*(invest(ing)?|buy|hold|purchase){e<=1}.*(btc|bitcoin|orange coin){e<=1}.*
+
+        ANSWER: It would be a sensible option, but I do not give out financial advice, Sorry!
+
+12)
+    does bitcoin beat snp500 or index funds?
+    thoughts on btc over dow jones?
+
+        REGEX: .*(bitcoin|btc|orange coin){e<=1}.*(perform|beat|run over|over){e<=1}.*(snp500|dow jones|dj|dow|US30).*((index|funds)?).*
+
+        ANSWERS: Yes, and by a landslide - it does not matter; SNP500, QQQ...
+
+13)
+    when did bitcoin first get created
+    when did bitcoin receive its official form
+
+        REGEX: .*(btc|bitcoin|orange coin){e<=1}.*(birthday|created|form(ed)?){e<=1}
+
+        ANSWER: January 3, 2009
+
+14)
+    so on the day that bitcoin got listed, how much was it going for
+    when bitcoin first released on the financial markets, what was its value
+    when bitcoin had its ipo how much did it go for
+
+       REGEX: .*(btc|bitcoin|orange coin){e<=1}.*(listed|release(ed)?|ipo).*
+
+       ANSWER: Not even a penny. 0.003 to be exact. If you waited even a year and bought 2 for $2, you would have made well over 200,000. That is if you could hold.
+
+15)
+    what programming language was bitcoin written in
+    what language was bitcoin developed in? was it python or go?
+
+        REGEX: .*(programming|language|c++|java|c|python|go).*(btc|bitcoin|orange coin){e<=1}.*
+
+        ANSWER: C++
+
+16)
+    whats the bitcoin pdf called
+    does bitcoin have a whitepaper and if so whats it called
+
+        REGEX: .*(bitcoin('s)?|btc|orange coin){e<=1}.*(white\s?paper|pdf).*(called){e<=1}.*
+
+        ANSWER: "Bitcoin: A peer-to-peer Electronic Cash System"
+
+            - Again #2, It also gives the PDF link to the user
+
+17)
+    what is 1/100,000,000 of a bitcoin called
+    what is the smallest amount of bitcoin you can own
+
+        REGEX: .*(smallest|minimum|1/100,000,000).*(btc|bitcoin|orange coin){e<=1}.*
+
+        ANSWER: 1 Satoshi - it's a play on for the creator of it.
+
+18)
+    i want to buy and hold one. what's the best course of action
+    i want to hold one forever, any advice
+
+        REGEX: .*(buy and hold|course|forever){e<=1}.*
+
+        ANSWER: Store it in a hardware wallet inside a waterproof box and dig a hole in your backyard to put it in. That way, you won't feel the need to sell it!
+
+19)
+    why do people refer to it as the ultimate privacy tool
+    people label bitcoin as decentralized - why
+
+        REGEX: .*(why)?.*(privacy tool|decentralized|secretive){e<=2}.*(why)?
+
+        ANSWER: Nothing is fully private. However, every transaction is registered onto the Blockchain. Once a transaction is recorded, it's immutable. This is what is meant by privacy.
+
+20)
+    is there a way for people to see my btc wallet
+    is it possible for people to look inside my bitcoin wallet
+
+        REGEX: .*(people){e<=1}.*(see|look|inside).*(wallet){e<=1}
+
+        ANSWER: Yes and no. The best analogy I can give is similar to 10 people in a room placing a $20 bill on the table, everyone walking out, then mixing the bills. You know other people have it, and you can see it, but you don't know who it belongs to.

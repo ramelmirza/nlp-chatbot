@@ -1,0 +1,20 @@
+.*(market|price|value).*(btc|bitcoin|orange coin).*
+.*(coins|tokens|orange coins){e<=1}.*(circulation|floating|out there){e<=1}
+.*(own|owns)(known|amount)?.*(btc|bitcoin|orange coin){e<=1}.*
+.*(the|is|a|an).*(satoshi|nakamoto){e<=2}.*
+.*(banks|hedge fund(s)?|exchanges|governments|institutions){e<=1}.*(most|amount|holdings|largest|biggest){e<=1}.*(bitcoin|btc)?
+.*(doesn't|don't)?.*(germany){e<=1}.*(a lot|as|much|now)?.*
+.*(hype|noise|fluff|popular){e<=1}.*(btc|bitcoin|orange coin)?
+.*(united states|usa|america|reserve strategic act|rsa|strategic act|reserve act|strategic act).*
+.*(btc|bitcoin|orange coin){e<=1}.*(pizza day){e<=1}.*(special|significance|tradition){e<=2}.*(btc|btc|orange coin)?.*
+.*(taxes|tax fraud|tax|taxman).*(bitcoin|btc|orange coin){e<=1}.*
+.*(invest(ing)?|buy|hold|purchase){e<=1}.*(btc|bitcoin|orange coin){e<=1}.*
+.*(bitcoin|btc|orange coin){e<=1}.*(perform|beat|run over|over){e<=1}.*(snp500|dow jones|dj|dow|US30).*((index|funds)?).*
+.*(btc|bitcoin|orange coin){e<=1}.*(birthday|created|form(ed)?){e<=1}
+.*(btc|bitcoin|orange coin){e<=1}.*(listed|release(ed)?|ipo).*
+.*(programming|language|c++|java|c|python|go).*(btc|bitcoin|orange coin){e<=1}.*
+.*(bitcoin('s)?|btc|orange coin){e<=1}.*(white\s?paper|pdf).*(called){e<=1}.*
+.*(smallest|minimum|1/100,000,000).*(btc|bitcoin|orange coin){e<=1}.*
+.*(buy and hold|course|forever){e<=1}.*
+.*(why)?.*(privacy tool|decentralized|secretive){e<=2}.*(why)?
+.*(people){e<=1}.*(see|look|inside).*(wallet){e<=1}

@@ -1,12 +1,14 @@
+"""
+This file uses get requests to CMC'S API to fetch BTC data - stores it inside a CSV file
+Ramel Mirza
+Date: 16-01-2025
+Version: 1.00
+"""
+
 import os
 import requests
 import json
 import csv
-
-"""
-Date: 16-01-2025
-Version: 1.00
-"""
 
 
 def get_request():
@@ -14,7 +16,7 @@ def get_request():
     Sends a GET request to CoinMarketCap's API
     :return: JSON string converted to a dict, else return None
     """
-    private_api_key = ""
+    private_api_key = "b94037d6-1928-4a75-8165-cf87858c1427"
     url = "https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest"
     query_params = {"CMC_PRO_API_KEY": private_api_key, "id": 1}
 
@@ -32,7 +34,7 @@ def get_request():
 def json_to_csv():
     """
     Converts JSON string/dict to CSV for future data manipulation (data retrieving/cleaning for now)
-    :return: 1 if successful, None if not
+    :return: the BTC data else None
     """
     file_name = "btc.csv"
     exists = os.path.exists(file_name)
@@ -51,23 +53,21 @@ def json_to_csv():
 
         if exists:
             file_mode = 'a'
-            print("Appending data to btc.csv--")
+            # print("Appending data to btc.csv--")
         else:
             file_mode = 'w'
-            print("Writing data to btc.csv--")
+            # print("Writing data to btc.csv--")
 
         with open(file_name, file_mode, newline='') as csv_file:
             writer = csv.writer(csv_file)
             if file_mode == 'a':  # already has csv header
                 writer.writerow(btc_data.values())
-                return 1
             elif file_mode == 'w':
                 writer.writerow(btc_data.keys())
                 writer.writerow(btc_data.values())
 
+        return btc_data
+
     else:
         print("Failed to retrieve GET request")
         return None
-
-
-json_to_csv()

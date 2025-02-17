@@ -1,9 +1,6 @@
 """
-Puts the FAQ bot skeleton code (I renamed it to cryptocb_skeleton)online as a discord bot
-
-Ramel Mirza, 000778681, Sunday, January 26, 2025
-
-Original reference was from Sam Scott, Mohawk College, 2021
+Implements the discord version of the crypto chatbot
+Ramel Mirza, Date Started: February 10, 2025
 """
 
 import discord
@@ -12,67 +9,74 @@ from crypto_chatbot import *
 
 class MyClient(discord.Client):
     """
-    Class that represents the bot user
+    Discord bot
     """
 
     def __init__(self):
         """
-        Sets default intents for the bot
-        :return: Constructs an object
+        Setting default intents
         """
         intents = discord.Intents.default()
         intents.message_content = True
         super().__init__(intents=intents)
 
-    async def killProgram(self):
+    async def kill(self):
         """
-        Made this helper function so that when the user types goodbye the program ends/chatbot logs off Discord
-        :return: None
+        Ends the program when one of the "bye" lemmas are uttered
+        :return:
         """
         await self.close()
 
     async def on_ready(self):
         """
-        Gets called when the bot is logged in
+        Message when logged on
         :return: None
         """
         print('Logged on as', self.user)
 
     async def on_message(self, message):
         """
-        Gets called when the bot receives a message from a bot user. The message object contains all information
-        :param message: The message from the user
+        The dialog between the bot and user
+        :param message: The message the user uttered
         :return: None
         """
 
-        # Makes sure that the bot does not respond to itself
+        both = read_files("answers", "regex")
+        ans = both[0]
+        exps = both[1]
+
         if message.author == self.user:
             return
 
-        # Gets the utterance then generates response
         utterance = message.content
 
-        # This for loops checks if there are extra quotation marks, if there is, remove them and the original question mark from the len of the utterance
-        extra = 0
-        for i in range(0, len(utterance)):
-            if utterance[i] == '?':
-                extra += 1
-        utterance = utterance[:(len(utterance) - extra)]
-        utterance = utterance.strip()
-        utterance = utterance.lower()
-
-        if utterance in ["hello", "good morning", "hi", "hey", "hiya", "what up"]:
-            await message.channel.send("Hello there!")
+        if utterance in ["hello", "good morning", "hi", "hey", "hiya", "what up", "what's up"]:
+            await message.channel.send("Hello there")
         elif utterance in ["goodbye", "bye", "ciao", "see you later"]:
-            await message.channel.send("Bye for now.")
-            await self.killProgram()
+            await message.channel.send("Bye for now")
+            await self.kill()
         else:
-            intent = understand(utterance)
-            response = generate(intent)
-            await message.channel.send(response)
+            response = dialog(utterance, ans, exps)
+
+            if type(response) == tuple:  # PDF Part
+                await message.channel.send(response[0])
+                time.sleep(2)
+                await message.channel.send(response[1])
+            elif type(response) == list and len(response) == 2:  # Bitcoin Pizza Day Part
+                await message.channel.send(response[1])
+                await message.channel.send(response[0])
+            elif type(response) == list and len(response) == 4:  # API Part
+                csv_file = response[3]
+                for i in range(0, len(response) - 1):
+                    await message.channel.send(response[i])
+                    time.sleep(2)
+                await message.channel.send(file=discord.File(csv_file))
+                # I used https://stackoverflow.com/questions/50860397/discord-py-bot-sending-file-to-discord-channel as a reference for the 1 line above
+            else:
+                await message.channel.send(response)
 
 
-# Logs in
+# Logs the bot on
 client = MyClient()
 with open("token.txt") as file:
     token = file.read()
